@@ -54,6 +54,7 @@
                     {
                         $('#body').append('<div>Server Says: ' + message.data.greeting + '</div>');
                     });
+                   
                     // Publish on a service channel since the message is for the server only
                     cometd.publish('/service/hello', { name: 'World' });
                 });
@@ -70,12 +71,16 @@
         cometd.configure({
             url: cometURL,
             logLevel: 'debug',
-            requestHeaders:'{"aaa":"111" , "bbb":"222"}'  
+            requestHeaders:'{"aaa":"111" , "bbb":"222"}',
         });
 
         cometd.addListener('/meta/handshake', _metaHandshake);
         cometd.addListener('/meta/connect', _metaConnect);
-
+        
+        cometd.addListener('/service/hello', function(message){
+        	alert("/service/hello " + message);    
+        });
+        
         cometd.handshake();
     });
 })(jQuery);
