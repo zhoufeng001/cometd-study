@@ -1,0 +1,3 @@
+set MAVEN_OPTS=-Dmyjetty.port=9292 -Dmyjetty.ajp.port=9009 -Dmyjetty.stop.port=9079 -Xrunjdwp:transport=dt_socket,address=8888,suspend=n,server=y -Xms64m -Xmx256m -Dcom.sun.management.jmxremote.port=8877 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=d:/java_pid.hprof 
+rem -Dio.netty.leakDetectionLevel=advanced
+mvn -Dmaven.test.skip=true jetty:run
